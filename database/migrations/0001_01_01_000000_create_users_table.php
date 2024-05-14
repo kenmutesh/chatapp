@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('is_blocked')->default(false);
+            $table->boolean('is_admin')->default(false);
+            $table->timestamp('blocked_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
