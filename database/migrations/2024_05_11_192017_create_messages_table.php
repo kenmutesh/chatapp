@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('last_message_id')->nullable()->constrained('messages');
         });
 
-        Schema::table('conversations ', function (Blueprint $table){
+        Schema::table('conversations', function (Blueprint $table){
             $table->foreignId('last_message_id')->nullable()->constrained('messages');
         });
     }
@@ -35,6 +35,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('conversations');
+        Schema::dropIfExists('groups');
         Schema::dropIfExists('messages');
     }
 };
