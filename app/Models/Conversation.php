@@ -15,14 +15,29 @@
             'last_message_id'
         ];
 
-        public function last_message(){
+        public static function getConversationsForSideBar(User $exceptUser)
+        {
+            $users = User::getUsersExceptUser($exceptUser);
+            $groups = Group::getGroupsForUser($exceptUser);
+            return $users->map(function (User $user){
+                return $user->toConversationArray();
+            })->concat($groups->map(function (Group $group){
+                return $group->toConversationArray();
+            }));
+        }
+
+        public function last_message()
+        {
             return $this->belongsTo(Message::class, 'last_message_id');
         }
 
-        public function user1(){
+        public function user1()
+        {
             return $this->belongsTo(User::class, 'user_id1');
         }
-        public function user2(){
+
+        public function user2()
+        {
             return $this->belongsTo(User::class, 'user_id2');
         }
     }
