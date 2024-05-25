@@ -1,10 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+#app {
+    height: 100vh;
+}
 
 .conversation-item .avatar.online:before {
     width: 10px;
     height: 10px;
+    outline-width: 1px;
     top: 1%;
     right: 1%;
 }
@@ -13,7 +17,27 @@
     background-color: darkgray;
     width: 10px;
     height: 10px;
+    outline-width: 1px;
     top: 1%;
     right: 1%;
 }
 
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* background of the scrollbar track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* color of the scrollbar track on hover */
+::-webkit-scrollbar-track:hover {
+    background: #a10b0b;
+}
+
+/* color of the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
